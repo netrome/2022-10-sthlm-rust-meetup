@@ -16,7 +16,9 @@ fn slide(props: &SlideProps) -> yew::Html {
     let msg = format!("Hello slide {}", props.id);
 
     yew::html! {
-        <h1>{ msg }</h1>
+        <div>
+            <h1>{ msg }</h1>
+        </div>
     }
 }
 

@@ -11,12 +11,28 @@ fn app() -> yew::Html {
     }
 }
 
+const KEY_RIGHT: u32 = 39;
+const KEY_LEFT: u32 = 37;
+
 #[yew::function_component(Slide)]
 fn slide(props: &SlideProps) -> yew::Html {
     let msg = format!("Hello slide {}", props.id);
 
+    let history = yew_router::hooks::use_history().unwrap();
+
+    let id = props.id;
+
+    let onkeydown = yew::Callback::once(move |event: web_sys::KeyboardEvent| {
+        let id = match event.key_code() {
+            KEY_RIGHT => id + 1,
+            KEY_LEFT => id - 1,
+            _ => 1337,
+        };
+        history.push(Route::Slide { id })
+    });
+
     yew::html! {
-        <div>
+        <div tabindex="0" {onkeydown}>
             <h1>{ msg }</h1>
         </div>
     }
@@ -32,7 +48,7 @@ enum Route {
     #[at("/")]
     Home,
     #[at("/slide/:id")]
-    Slide{id: usize},
+    Slide { id: usize },
     #[not_found]
     #[at("/404")]
     NotFound,
@@ -41,7 +57,7 @@ enum Route {
 fn switch(routes: &Route) -> yew::Html {
     match routes {
         Route::Home => html! { <h1>{ "Home" }</h1> },
-        Route::Slide{id} => html! {
+        Route::Slide { id } => html! {
             <Slide id={*id} />
         },
         Route::NotFound => html! { <h1>{ "404" }</h1> },
@@ -49,3 +65,4 @@ fn switch(routes: &Route) -> yew::Html {
 }
 
 use yew::html;
+use yew_router::prelude::History;

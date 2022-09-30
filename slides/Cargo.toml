@@ -8,3 +8,6 @@ edition = "2021"
 [dependencies]
 yew = "0.19.3"
 yew-router = "0.16"
+wasm-bindgen = "0.2.83"
+weblog = "0.3.0"
+web-sys = "0.3.60"

@@ -17,3 +17,8 @@ $primary: $sea-green;
 $link: $green-blue-crayola;
 
 @import "../bulma-0.9.4/bulma.sass";
+
+div:focus {
+    outline: 0;
+    border: none;
+}

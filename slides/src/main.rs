@@ -78,7 +78,7 @@ fn bullet_slide(title: &str, points: &[&str]) -> yew::Html {
 
     yew::html! {
         <div class="section">
-            <div class="container">
+            <div class="content">
                 <h1 class="title">{ title }</h1>
                 <ul>{ bullets }</ul>
             </div>

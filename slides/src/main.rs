@@ -14,10 +14,8 @@ fn app() -> yew::Html {
 const KEY_RIGHT: u32 = 39;
 const KEY_LEFT: u32 = 37;
 
-#[yew::function_component(Slide)]
-fn slide(props: &SlideProps) -> yew::Html {
-    let msg = format!("Hello slide {}", props.id);
-
+#[yew::function_component(Slideshow)]
+fn slideshow(props: &SlideProps) -> yew::Html {
     let history = yew_router::hooks::use_history().unwrap();
 
     let id = props.id;
@@ -31,9 +29,35 @@ fn slide(props: &SlideProps) -> yew::Html {
         history.push(Route::Slide { id })
     });
 
+    let all_slides = vec![
+        bullet_slide(
+            "Never gonna",
+            &["Give you up", "Let you down", "Tell a lie", "Hurt you"],
+        ),
+        bullet_slide("I am", &["Mother of bugs", "Typer of Keyboard"]),
+    ];
+
+    let default_slide = bullet_slide("No more content", &["You went too far", "Go back!"]);
+
+    let focused_slide = all_slides.get(props.id).unwrap_or(&default_slide).clone();
+
     yew::html! {
         <div tabindex="0" {onkeydown}>
-            <h1>{ msg }</h1>
+        { focused_slide }
+        </div>
+    }
+}
+
+fn bullet_slide(title: &str, points: &[&str]) -> yew::Html {
+    let bullets: Vec<_> = points
+        .iter()
+        .map(|point| yew::html! {<li> { point } </li>})
+        .collect();
+
+    yew::html! {
+        <div>
+            <h1>{ title }</h1>
+            <ul>{ bullets }</ul>
         </div>
     }
 }
@@ -58,11 +82,13 @@ fn switch(routes: &Route) -> yew::Html {
     match routes {
         Route::Home => html! { <h1>{ "Home" }</h1> },
         Route::Slide { id } => html! {
-            <Slide id={*id} />
+            <Slideshow id={*id} />
         },
         Route::NotFound => html! { <h1>{ "404" }</h1> },
     }
 }
+
+use std::default;
 
 use yew::html;
 use yew_router::prelude::History;

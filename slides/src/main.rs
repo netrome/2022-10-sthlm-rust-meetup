@@ -34,13 +34,19 @@ fn slideshow(props: &SlideProps) -> yew::Html {
     });
 
     let all_slides = vec![
+        menti_slide(),
+        title_slide("Goodbye JS 👋 Hello Rust", "Exploring front-end development in Yew.rs"),
+        bullet_slide("I am", &["Mother of bugs", "Typer of Keyboard"]),
+        bullet_slide_with_image(
+            "Rust front-end frameworks",
+            &["Seed", "Yew", "Sauron", "Syncamore", "Percy", "Iced", "Mogwai", "Dioxus"],
+            "http://localhost:9090/rust_frontend.png"
+        ),
         bullet_slide_with_image(
             "Never gonna",
             &["Give you up", "Let you down", "Tell a lie", "Hurt you"],
             "https://variety.com/wp-content/uploads/2021/07/Rick-Astley-Never-Gonna-Give-You-Up.png?w=681&h=383&crop=1"
         ),
-        bullet_slide("I am", &["Mother of bugs", "Typer of Keyboard"]),
-        menti_slide(),
         image_slide("http://localhost:9090/yew_deps.png"),
     ];
 
@@ -86,6 +92,19 @@ fn bullet_slide(title: &str, points: &[&str]) -> yew::Html {
                 <ul>{ bullets }</ul>
             </div>
         </div>
+    }
+}
+
+fn title_slide(title: &str, subtitle: &str) -> yew::Html {
+    yew::html!{
+        <section class="hero is-fullheight is-info">
+            <div class="hero-body">
+                <div class="">
+                    <h1 class="title"> { title } </h1>
+                    <h2 class="subtitle"> { subtitle } </h2>
+                </div>
+            </div>
+        </section>
     }
 }
 

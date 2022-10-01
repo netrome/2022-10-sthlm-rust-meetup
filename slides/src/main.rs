@@ -22,8 +22,8 @@ fn slideshow(props: &SlideProps) -> yew::Html {
 
     let onkeydown = yew::Callback::once(move |event: web_sys::KeyboardEvent| {
         let id = match event.key_code() {
-            KEY_RIGHT => id + 1,
-            KEY_LEFT => id - 1,
+            KEY_RIGHT => id.checked_add(1).unwrap_or(usize::MAX),
+            KEY_LEFT => id.checked_sub(1).unwrap_or(0),
             _ => 1337,
         };
         history.push(Route::Slide { id })
@@ -42,7 +42,7 @@ fn slideshow(props: &SlideProps) -> yew::Html {
     let focused_slide = all_slides.get(props.id).unwrap_or(&default_slide).clone();
 
     yew::html! {
-        <div tabindex="0" {onkeydown}>
+        <div id="slideshow" tabindex="0" {onkeydown} autofocus=true>
         { focused_slide }
         </div>
     }
@@ -87,8 +87,6 @@ fn switch(routes: &Route) -> yew::Html {
         Route::NotFound => html! { <h1>{ "404" }</h1> },
     }
 }
-
-use std::default;
 
 use yew::html;
 use yew_router::prelude::History;

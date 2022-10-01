@@ -97,7 +97,7 @@ fn bullet_slide(title: &str, points: &[&str]) -> yew::Html {
 
 fn title_slide(title: &str, subtitle: &str) -> yew::Html {
     yew::html!{
-        <section class="hero is-fullheight is-info">
+        <section class="hero is-fullheight is-primary">
             <div class="hero-body">
                 <div class="">
                     <h1 class="title"> { title } </h1>

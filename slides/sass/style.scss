@@ -12,9 +12,19 @@ $sea-green: #008148ff;
 $green-blue-crayola: #058ed9ff;
 $rose: #f92a82ff;
 
+/* SCSS HEX */
+$ming: #006d77ff;
+$middle-blue-green: #83c5beff;
+$alice-blue: #edf6f9ff;
+$unbleached-silk: #ffddd2ff;
+$dark-salmon: #e29578ff;
+
 $family-sans-serif: "IBM Plex Sans Condensed", sans-serif;
-$primary: $sea-green;
-$link: $green-blue-crayola;
+$primary: $ming;
+$link: $middle-blue-green;
+$info: $alice-blue;
+$warning: $unbleached-silk;
+$danger: $dark-salmon;
 
 @import "../bulma-0.9.4/bulma.sass";
 

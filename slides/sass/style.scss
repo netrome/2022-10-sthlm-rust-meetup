@@ -1,0 +1,19 @@
+@charset "utf-8";
+
+// Import a Google Font
+@import url('https://fonts.googleapis.com/css?family=Nunito:400,700');
+
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+/* SCSS HEX */
+$mikado-yellow: #fec601ff;
+$eggplant: #5e4352ff;
+$sea-green: #008148ff;
+$green-blue-crayola: #058ed9ff;
+$rose: #f92a82ff;
+
+$family-sans-serif: "IBM Plex Sans Condensed", sans-serif;
+$primary: $sea-green;
+$link: $green-blue-crayola;
+
+@import "../bulma-0.9.4/bulma.sass";

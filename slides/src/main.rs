@@ -24,7 +24,7 @@ fn slideshow(props: &SlideProps) -> yew::Html {
         let id = match event.key_code() {
             KEY_RIGHT => id.checked_add(1).unwrap_or(usize::MAX),
             KEY_LEFT => id.checked_sub(1).unwrap_or(0),
-            _ => 1337,
+            _ => id,
         };
         history.push(Route::Slide { id })
     });
@@ -36,12 +36,14 @@ fn slideshow(props: &SlideProps) -> yew::Html {
         ),
         bullet_slide("I am", &["Mother of bugs", "Typer of Keyboard"]),
         menti_slide(),
+        image_slide("http://localhost:9090/yew_deps.png"),
     ];
 
-    let default_slide = bullet_slide("No more content", &["You went too far", "Go back!"]);
+    let thank_you = bullet_slide("Thank you for listening", &["Goodbye"]);
 
-    let focused_slide = all_slides.get(props.id).unwrap_or(&default_slide).clone();
+    let focused_slide = all_slides.get(props.id).unwrap_or(&thank_you).clone();
 
+    // Ugly hack to ensure the slide element is focused
     js! {
         setTimeout(
             () => {
@@ -58,6 +60,12 @@ fn slideshow(props: &SlideProps) -> yew::Html {
     }
 }
 
+fn image_slide(src: impl ToString) -> yew::Html {
+    yew::html! {
+        <img src={ src.to_string() } />
+    }
+}
+
 fn bullet_slide(title: &str, points: &[&str]) -> yew::Html {
     let bullets: Vec<_> = points
         .iter()
@@ -69,12 +77,6 @@ fn bullet_slide(title: &str, points: &[&str]) -> yew::Html {
             <h1>{ title }</h1>
             <ul>{ bullets }</ul>
         </div>
-    }
-}
-
-fn alert_slide() -> yew::Html {
-    yew::html! {
-        <p> {"This slide has custom JS"} </p>
     }
 }
 

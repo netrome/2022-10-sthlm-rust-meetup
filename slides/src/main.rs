@@ -34,9 +34,10 @@ fn slideshow(props: &SlideProps) -> yew::Html {
     });
 
     let all_slides = vec![
-        bullet_slide(
+        bullet_slide_with_image(
             "Never gonna",
             &["Give you up", "Let you down", "Tell a lie", "Hurt you"],
+            "https://variety.com/wp-content/uploads/2021/07/Rick-Astley-Never-Gonna-Give-You-Up.png?w=681&h=383&crop=1"
         ),
         bullet_slide("I am", &["Mother of bugs", "Typer of Keyboard"]),
         menti_slide(),
@@ -58,7 +59,7 @@ fn slideshow(props: &SlideProps) -> yew::Html {
     }
 
     yew::html! {
-        <div id="slideshow" tabindex="0" {onkeydown} autofocus=true>
+        <div class="container" id="slideshow" tabindex="0" {onkeydown} autofocus=true>
         { focused_slide }
         </div>
     }
@@ -66,7 +67,9 @@ fn slideshow(props: &SlideProps) -> yew::Html {
 
 fn image_slide(src: impl ToString) -> yew::Html {
     yew::html! {
-        <img src={ src.to_string() } />
+        <figure class="image is-fullheight">
+            <img src={ src.to_string() } />
+        </figure>
     }
 }
 
@@ -81,6 +84,29 @@ fn bullet_slide(title: &str, points: &[&str]) -> yew::Html {
             <div class="content">
                 <h1 class="title">{ title }</h1>
                 <ul>{ bullets }</ul>
+            </div>
+        </div>
+    }
+}
+
+fn bullet_slide_with_image(title: &str, points: &[&str], image_src: impl ToString) -> yew::Html {
+    let bullets: Vec<_> = points
+        .iter()
+        .map(|point| yew::html! {<li> { point } </li>})
+        .collect();
+
+    yew::html! {
+        <div class="columns is-vcentered">
+            <div class="column is-half is-fullheight">
+                <div class="content">
+                    <h1 class="title">{ title }</h1>
+                    <ul>{ bullets }</ul>
+                </div>
+            </div>
+            <div class="column is-half is-fullheight">
+                <figure class="image is-fullheight">
+                    <img src={ image_src.to_string() } />
+                </figure>
             </div>
         </div>
     }

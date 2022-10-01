@@ -69,6 +69,10 @@ Let's start exploring!
 ## Quick primer on WASM & Rust
 ...
 
+## Choosing Yew.rs?
+- Seed seemed more similar to Elm, whereas Yew gave a more "hackable" and react-like impression.
+- Seed used cargo generate, Yew has a clean start.
+
 ## Minimal Yew.rs app
 This is what you need to get started with Yew:
 

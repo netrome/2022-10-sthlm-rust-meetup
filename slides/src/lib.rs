@@ -27,8 +27,25 @@ fn slideshow(props: &SlideProps) -> yew::Html {
 
     let all_slides = vec![
         menti_slide(),
-        title_slide("Goodbye JS 👋 Hello Rust", "Exploring front-end development in Yew.rs"),
-        bullet_slide("I am", &["Mother of bugs", "Typer of Keyboard"]),
+        title_slide(HeroStyle::Primary, "Goodbye JS 👋 Hello Rust", "Exploring front-end development with Yew.rs"),
+        bullet_slide("Agenda", &["Intro", "Are we frontend yet?", "Enter yew.rs", "Getting practical", "Summary"]),
+        bullet_slide("About me", &["Algorithm Engineer @ Tobii", "AI Developer @ Norna", "Software Engineer @ Klarna", "Engineering Manager @ Validio"]),
+        bullet_slide("Some of my web-heavy projects", &["Travel blog (Personal)", "Data cleaning tool (Tobii)", "Data annotation tool (Norna)", "Wedding website (Personal)"]),
+        bullet_slide(
+            "Which stack would I choose today?",
+            &["Extensive web UI, large team -> JS/TS front-end, Rust backend"
+             ,"Content-heavy website -> No client side logic, Rust backend"
+             ,"MVP/smaller app, small team -> fullstack JS or fullstack Rust"
+            ]
+        ),
+        bullet_slide(
+            "Benefits of using a single language",
+            &["Code reuse"
+             ,"Cognitive load"
+             ,"Quick onboarding"
+            ]
+        ),
+        title_slide(HeroStyle::Info, "Are we frontend yet?", ""),
         bullet_slide_with_image(
             "Rust front-end frameworks",
             &["Seed", "Yew", "Sauron", "Syncamore", "Percy", "Iced", "Mogwai", "Dioxus"],
@@ -72,6 +89,35 @@ fn image_slide(src: impl ToString) -> yew::Html {
     }
 }
 
+enum HeroStyle {
+    Primary,
+    Info,
+}
+
+impl ToString for HeroStyle {
+    fn to_string(&self) -> String {
+        match self {
+            Self::Primary => "is-primary".to_owned(),
+            Self::Info => "is-info".to_owned(),
+        }
+    }
+}
+
+fn title_slide(hero_style: HeroStyle, title: &str, subtitle: &str) -> yew::Html {
+    let section_class = format!("hero is-fullheight {}", hero_style.to_string());
+
+    yew::html! {
+        <section class={section_class}>
+            <div class="hero-body">
+                <div class="">
+                    <h1 class="title"> { title } </h1>
+                    <h2 class="subtitle"> { subtitle } </h2>
+                </div>
+            </div>
+        </section>
+    }
+}
+
 fn bullet_slide(title: &str, points: &[&str]) -> yew::Html {
     let bullets: Vec<_> = points
         .iter()
@@ -88,19 +134,6 @@ fn bullet_slide(title: &str, points: &[&str]) -> yew::Html {
     }
 }
 
-fn title_slide(title: &str, subtitle: &str) -> yew::Html {
-    yew::html!{
-        <section class="hero is-fullheight is-primary">
-            <div class="hero-body">
-                <div class="">
-                    <h1 class="title"> { title } </h1>
-                    <h2 class="subtitle"> { subtitle } </h2>
-                </div>
-            </div>
-        </section>
-    }
-}
-
 fn bullet_slide_with_image(title: &str, points: &[&str], image_src: impl ToString) -> yew::Html {
     let bullets: Vec<_> = points
         .iter()
@@ -108,7 +141,7 @@ fn bullet_slide_with_image(title: &str, points: &[&str], image_src: impl ToStrin
         .collect();
 
     yew::html! {
-        <div class="columns is-vcentered">
+        <div class="section columns is-vcentered">
             <div class="column is-half is-fullheight">
                 <div class="content">
                     <h1 class="title">{ title }</h1>

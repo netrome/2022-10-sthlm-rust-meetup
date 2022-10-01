@@ -1,5 +1,4 @@
 pub(crate) fn slide() -> yew::Html {
-
     let source_code = include_str!("this_slide.rs");
 
     yew::html! {

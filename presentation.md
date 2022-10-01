@@ -21,6 +21,11 @@ Is it a good idea to use JavaScript for your web backend?
 
 - Also no
 
+## Front-end frameworks in Rust
+- Yew
+- Seed
+- ...
+
 ## Topic
 This presentation is about exploring front-end development in Rust...
 
@@ -60,6 +65,9 @@ Let's talk a bit about my background in web development.
 - Rich ecosystem of libraries
 
 Let's start exploring!
+
+## Quick primer on WASM & Rust
+...
 
 ## Minimal Yew.rs app
 This is what you need to get started with Yew:

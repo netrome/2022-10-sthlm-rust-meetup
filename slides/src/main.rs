@@ -42,6 +42,15 @@ fn slideshow(props: &SlideProps) -> yew::Html {
 
     let focused_slide = all_slides.get(props.id).unwrap_or(&default_slide).clone();
 
+    js! {
+        setTimeout(
+            () => {
+                document.getElementById("slideshow").focus(); console.log("Focused slideshow")
+            }
+            , 200
+        );
+    }
+
     yew::html! {
         <div id="slideshow" tabindex="0" {onkeydown} autofocus=true>
         { focused_slide }
@@ -60,6 +69,12 @@ fn bullet_slide(title: &str, points: &[&str]) -> yew::Html {
             <h1>{ title }</h1>
             <ul>{ bullets }</ul>
         </div>
+    }
+}
+
+fn alert_slide() -> yew::Html {
+    yew::html! {
+        <p> {"This slide has custom JS"} </p>
     }
 }
 
@@ -97,3 +112,5 @@ fn switch(routes: &Route) -> yew::Html {
 
 use yew::html;
 use yew_router::prelude::History;
+
+use stdweb::js;

@@ -1,7 +1,9 @@
 #[yew::function_component(Present)]
 pub(crate) fn present(props: &SlideProps) -> yew::Html {
-    let thank_you = title_slide::primary("Thank you for listening 👋", "");
-    let focused_slide = content::SLIDES.get(props.id).unwrap_or(&thank_you).clone();
+    let focused_slide = content::SLIDES
+        .get(props.id)
+        .unwrap_or(&content::THANK_YOU)
+        .clone();
 
     let onkeydown = slide_navigation_callback(props.id);
 
@@ -38,6 +40,5 @@ const KEY_LEFT: u32 = 37;
 use crate::content;
 use crate::js;
 use crate::route;
-use crate::title_slide;
 
 use yew_router::prelude::History;

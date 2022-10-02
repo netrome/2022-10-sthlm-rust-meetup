@@ -167,6 +167,9 @@ pub(crate) const SLIDES: Lazy<Vec<yew::Html>> = Lazy::new(|| {
     ]
 });
 
+pub(crate) const THANK_YOU: Lazy<yew::Html> =
+    Lazy::new(|| title_slide::primary("Thank you for listening 👋", ""));
+
 use crate::bullet_slide;
 use crate::code_slide;
 use crate::slido_slide;

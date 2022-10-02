@@ -8,7 +8,7 @@ pub(crate) fn present(props: &SlideProps) -> yew::Html {
     let onkeydown = slide_navigation_callback(props.id);
 
     js::focus_slideshow(); // Ensure #slideshow is focused to capture key events
-                           //
+
     yew::html! {
         <div class="container" id="slideshow" tabindex="0" {onkeydown} autofocus=true>
         { focused_slide }

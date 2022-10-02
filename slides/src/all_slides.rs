@@ -130,8 +130,8 @@ pub(crate) const ALL_SLIDES: Lazy<Vec<yew::Html>> = Lazy::new(|| {
 
 use crate::bullet_slide;
 use crate::code_slide;
+use crate::slido_slide;
 use crate::this_slide;
 use crate::title_slide;
-use crate::slido_slide;
 
 use once_cell::sync::Lazy;

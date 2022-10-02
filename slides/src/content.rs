@@ -10,8 +10,8 @@ pub(crate) const SLIDES: Lazy<Vec<yew::Html>> = Lazy::new(|| {
             &[
                 "Intro",
                 "Are we frontend yet?",
-                "Enter yew.rs",
-                "Getting practical",
+                "Introducing Yew",
+                "Yew in practice",
                 "Conclusion",
             ],
         ),
@@ -83,7 +83,7 @@ pub(crate) const SLIDES: Lazy<Vec<yew::Html>> = Lazy::new(|| {
             ],
             "http://localhost:9090/rust_frontend.png",
         ),
-        title_slide::info("Enter yew.rs", ""),
+        title_slide::info("Introducing Yew", ""),
         bullet_slide::with_image(
             "Yew",
             &[

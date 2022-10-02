@@ -12,7 +12,7 @@ struct SlideProps {
     pub id: usize,
 }
 
-mod all_slides;
+mod content;
 mod bullet_slide;
 mod code_slide;
 mod route;

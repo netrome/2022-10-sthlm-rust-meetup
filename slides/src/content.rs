@@ -1,4 +1,4 @@
-pub(crate) const ALL_SLIDES: Lazy<Vec<yew::Html>> = Lazy::new(|| {
+pub(crate) const SLIDES: Lazy<Vec<yew::Html>> = Lazy::new(|| {
     vec![
         slido_slide::slide(),
         title_slide::primary(

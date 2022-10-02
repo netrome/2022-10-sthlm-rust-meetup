@@ -15,7 +15,7 @@ pub(crate) fn present(props: &SlideProps) -> yew::Html {
 
     let thank_you = bullet_slide::slide("Thank you for listening", &["Goodbye"]);
 
-    let focused_slide = all_slides::ALL_SLIDES
+    let focused_slide = content::SLIDES
         .get(props.id)
         .unwrap_or(&thank_you)
         .clone();
@@ -45,7 +45,7 @@ pub(crate) struct SlideProps {
 const KEY_RIGHT: u32 = 39;
 const KEY_LEFT: u32 = 37;
 
-use crate::all_slides;
+use crate::content;
 use crate::bullet_slide;
 use crate::route;
 

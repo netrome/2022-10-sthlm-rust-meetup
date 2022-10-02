@@ -140,14 +140,6 @@ fn slideshow(props: &SlideProps) -> yew::Html {
     }
 }
 
-fn image_slide(src: impl ToString) -> yew::Html {
-    yew::html! {
-        <figure class="image is-fullheight">
-            <img src={ src.to_string() } />
-        </figure>
-    }
-}
-
 enum HeroStyle {
     Primary,
     Info,

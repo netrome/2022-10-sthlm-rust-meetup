@@ -12,7 +12,7 @@ pub(crate) const SLIDES: Lazy<Vec<yew::Html>> = Lazy::new(|| {
                 "Are we frontend yet?",
                 "Enter yew.rs",
                 "Getting practical",
-                "Summary",
+                "Conclusion",
             ],
         ),
         bullet_slide::slide(
@@ -142,7 +142,28 @@ pub(crate) const SLIDES: Lazy<Vec<yew::Html>> = Lazy::new(|| {
         code_slide::slide!("lib.rs"),
         code_slide::slide!("route.rs"),
         code_slide::slide!("slideshow.rs"),
+        code_slide::slide!("bullet_slide.rs"),
+        slido_slide::slide(),
         code_slide::slide!("content.rs"),
+        bullet_slide::slide(
+            "Are we frontend yet?",
+            &[
+                "Can we run Rust in the browser?",
+                "Can we interface with all web APIs?",
+                "Can we interoperate with existing JS libraries?",
+                "Are there any good frameworks out there already?",
+            ],
+        ),
+        bullet_slide::with_image(
+            "Are we frontend yet? - Yes",
+            &[
+                "Can we run Rust in the browser? - Yes",
+                "Can we interface with all web APIs? - Yes",
+                "Can we interoperate with existing JS libraries? - Yes",
+                "Are there any good frameworks out there already? - Yes",
+            ],
+            "http://localhost:9090/oprah_yes.jpg",
+        ),
     ]
 });
 

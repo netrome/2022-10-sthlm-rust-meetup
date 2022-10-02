@@ -72,8 +72,8 @@ pub(crate) const SLIDES: Lazy<Vec<yew::Html>> = Lazy::new(|| {
         bullet_slide::with_image(
             "Rust front-end frameworks",
             &[
-                "Seed",
                 "Yew",
+                "Seed",
                 "Sauron",
                 "Syncamore",
                 "Percy",

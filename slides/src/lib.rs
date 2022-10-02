@@ -30,7 +30,15 @@ fn slideshow(props: &SlideProps) -> yew::Html {
         title_slide(HeroStyle::Primary, "Goodbye JS 👋 Hello Rust", "Exploring front-end development with Yew.rs"),
         bullet_slide("Agenda", &["Intro", "Are we frontend yet?", "Enter yew.rs", "Getting practical", "Summary"]),
         bullet_slide("About me", &["Algorithm Engineer @ Tobii", "AI Developer @ Norna", "Software Engineer @ Klarna", "Engineering Manager @ Validio"]),
-        bullet_slide("Some of my web-heavy projects", &["Travel blog (Personal)", "Data cleaning tool (Tobii)", "Data annotation tool (Norna)", "Wedding website (Personal)"]),
+        bullet_slide(
+            "Some of my web-heavy projects",
+            &["Vacation planner (Stealth startup)"
+             ,"Travel blog (Personal)"
+             ,"Data cleaning tool (Tobii)"
+             ,"Data annotation tool (Norna)"
+             ,"Wedding website (Personal)"
+             ]
+        ),
         bullet_slide(
             "Which stack would I choose today?",
             &["Extensive web UI, large team -> JS/TS front-end, Rust backend"
@@ -46,10 +54,36 @@ fn slideshow(props: &SlideProps) -> yew::Html {
             ]
         ),
         title_slide(HeroStyle::Info, "Are we frontend yet?", ""),
+        bullet_slide(
+            "Are we frontend yet?",
+            &["Can we run Rust in the browser?"
+             ,"Can we interface with all web APIs?"
+             ,"Can we interoperate with existing JS libraries?"
+             ,"Are there any good frameworks out there already?"
+            ]
+        ),
         bullet_slide_with_image(
             "Rust front-end frameworks",
             &["Seed", "Yew", "Sauron", "Syncamore", "Percy", "Iced", "Mogwai", "Dioxus"],
             "http://localhost:9090/rust_frontend.png"
+        ),
+        title_slide(HeroStyle::Info, "Enter yew.rs", ""),
+        bullet_slide_with_image(
+            "Yew",
+            &["Component based framework"
+             ,"Virtual DOM"
+             ,"Very similar to React"
+            ],
+            "http://localhost:9090/yew_rs.png"
+        ),
+        bullet_slide_with_image(
+            "Yew",
+            &["2017 first commit"
+             ,"6550 dependents on GitHub"
+             ,"333 contributors"
+             ,"388 925 downloads from crates.io"
+            ],
+            "http://localhost:9090/yew_contributors.png"
         ),
         this_slide::slide(),
         bullet_slide_with_image(

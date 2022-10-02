@@ -30,7 +30,7 @@ pub(crate) fn with_image(title: &str, points: &[&str], image_src: impl ToString)
             </div>
             <div class="column is-half is-fullheight">
                 <div class="box">
-                    <figure class="image is-square">
+                    <figure class="image is-square fade-in">
                         <img src={ image_src.to_string() } />
                     </figure>
                 </div>

@@ -86,7 +86,17 @@ fn slideshow(props: &SlideProps) -> yew::Html {
             "http://localhost:9090/yew_contributors.png"
         ),
         title_slide(HeroStyle::Info, "Yew in practice", ""),
+        bullet_slide_with_image(
+            "A minimal yew app",
+            &["10 loc main.rs"
+             ,"5 loc index.html"
+             ,"1 dependency in cargo.toml"
+            ],
+            "http://localhost:9090/minimal_app_tree.png"
+        ),
+        code_slide::slide!("../../minimal-app/Cargo.toml"),
         code_slide::slide!("../../minimal-app/src/main.rs"),
+        code_slide::slide!("../../minimal-app/index.html"),
         this_slide::slide(),
         code_slide::slide!("code_slide.rs"),
         bullet_slide_with_image(
@@ -178,17 +188,19 @@ fn bullet_slide_with_image(title: &str, points: &[&str], image_src: impl ToStrin
         .collect();
 
     yew::html! {
-        <div class="section columns is-vcentered">
-            <div class="column is-half is-fullheight">
+        <div class="columns is-vcentered">
+            <div class="column section is-half is-fullheight">
                 <div class="content">
                     <h1 class="title">{ title }</h1>
                     <ul>{ bullets }</ul>
                 </div>
             </div>
             <div class="column is-half is-fullheight">
-                <figure class="image is-fullheight">
-                    <img src={ image_src.to_string() } />
-                </figure>
+                <div class="box">
+                    <figure class="image is-square">
+                        <img src={ image_src.to_string() } />
+                    </figure>
+                </div>
             </div>
         </div>
     }

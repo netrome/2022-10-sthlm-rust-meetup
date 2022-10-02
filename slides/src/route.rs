@@ -19,5 +19,4 @@ pub(crate) enum Route {
     NotFound,
 }
 
-
 use crate::slideshow;

@@ -17,6 +17,7 @@ struct SlideProps {
 mod bullet_slide;
 mod code_slide;
 mod content;
+mod js;
 mod route;
 mod slideshow;
 mod slido_slide;

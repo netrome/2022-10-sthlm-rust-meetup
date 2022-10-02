@@ -24,23 +24,26 @@ pub(crate) const SLIDES: Lazy<Vec<yew::Html>> = Lazy::new(|| {
                 "Engineering Manager @ Validio",
             ],
         ),
-        bullet_slide::slide(
+        bullet_slide::with_image(
             "Some of my web-heavy projects",
             &[
                 "Vacation planner (Stealth startup)",
                 "Travel blog (Personal)",
                 "Data cleaning tool (Tobii)",
                 "Data annotation tool (Norna)",
+                "Klarna Online (Klarna)",
                 "Wedding website (Personal)",
             ],
+            "http://localhost:9090/web_frameworks.png",
         ),
-        bullet_slide::slide(
+        bullet_slide::with_image(
             "Which stack would I choose today?",
             &[
                 "Extensive web UI, large team -> JS/TS front-end, Rust backend",
                 "Content-heavy website -> No client side logic, Rust backend",
                 "MVP/smaller app, small team -> fullstack JS or fullstack Rust",
             ],
+            "http://localhost:9090/full_stack.jpg",
         ),
         bullet_slide::slide(
             "Benefits of using a single language",
@@ -127,7 +130,10 @@ pub(crate) const SLIDES: Lazy<Vec<yew::Html>> = Lazy::new(|| {
         bullet_slide::with_image(
             "This presentation",
             &[
-                "stuff...",
+                "Written in Rust using Yew",
+                "Served with `trunk serve`",
+                "Content is a Vec<yew::Html>",
+                "Styled with Bulma CSS",
             ],
             "http://localhost:9090/slide_architecture.png",
         ),

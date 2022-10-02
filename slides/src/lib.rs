@@ -18,8 +18,8 @@ fn slideshow(props: &SlideProps) -> yew::Html {
 
     let onkeydown = yew::Callback::once(move |event: web_sys::KeyboardEvent| {
         let id = match event.key_code() {
-            KEY_RIGHT => id.checked_add(1).unwrap_or(usize::MAX),
-            KEY_LEFT => id.checked_sub(1).unwrap_or(0),
+            KEY_RIGHT => id.saturating_add(1),
+            KEY_LEFT => id.saturating_sub(1),
             _ => id,
         };
         history.push(Route::Slide { id })
@@ -85,7 +85,10 @@ fn slideshow(props: &SlideProps) -> yew::Html {
             ],
             "http://localhost:9090/yew_contributors.png"
         ),
+        title_slide(HeroStyle::Info, "Yew in practice", ""),
+        code_slide::slide!("../../minimal-app/src/main.rs"),
         this_slide::slide(),
+        code_slide::slide!("code_slide.rs"),
         bullet_slide_with_image(
             "Never gonna",
             &["Give you up", "Let you down", "Tell a lie", "Hurt you"],
@@ -223,6 +226,7 @@ fn switch(routes: &Route) -> yew::Html {
     }
 }
 
+mod code_slide;
 mod this_slide;
 
 use yew::html;

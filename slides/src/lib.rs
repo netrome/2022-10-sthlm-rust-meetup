@@ -87,10 +87,10 @@ fn slideshow(props: &SlideProps) -> yew::Html {
         ),
         bullet_slide_with_image(
             "Why Yew?",
-            &["Most popular"
-             ,"Familiar interface"
-             ,"Hackable"
+            &["Well maintained"
              ,"Easy to get started"
+             ,"Intuitive"
+             ,"Hackable"
             ],
             "http://localhost:9090/yew_compiler_error.png"
         ),

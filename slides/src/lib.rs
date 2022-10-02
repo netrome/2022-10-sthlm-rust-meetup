@@ -12,9 +12,11 @@ struct SlideProps {
     pub id: usize,
 }
 
-mod content;
+// Just module declarations from here
+
 mod bullet_slide;
 mod code_slide;
+mod content;
 mod route;
 mod slideshow;
 mod slido_slide;

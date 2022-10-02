@@ -124,7 +124,19 @@ pub(crate) const SLIDES: Lazy<Vec<yew::Html>> = Lazy::new(|| {
         code_slide::slide!("../../minimal-app/index.html"),
         title_slide::info("Yew in practice", ""),
         this_slide::slide(),
+        bullet_slide::with_image(
+            "This presentation",
+            &[
+                "stuff...",
+            ],
+            "http://localhost:9090/slide_architecture.png",
+        ),
         code_slide::slide!("code_slide.rs"),
+        code_slide::slide!("main.rs"),
+        code_slide::slide!("lib.rs"),
+        code_slide::slide!("route.rs"),
+        code_slide::slide!("slideshow.rs"),
+        code_slide::slide!("content.rs"),
     ]
 });
 

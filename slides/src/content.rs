@@ -142,6 +142,7 @@ pub(crate) const SLIDES: Lazy<Vec<yew::Html>> = Lazy::new(|| {
         code_slide::slide!("lib.rs"),
         code_slide::slide!("route.rs"),
         code_slide::slide!("slideshow.rs"),
+        code_slide::slide!("js.rs"),
         code_slide::slide!("bullet_slide.rs"),
         slido_slide::slide(),
         code_slide::slide!("content.rs"),

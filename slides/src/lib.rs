@@ -62,6 +62,15 @@ fn slideshow(props: &SlideProps) -> yew::Html {
              ,"Are there any good frameworks out there already?"
             ]
         ),
+        bullet_slide_with_icon(
+            "WebAssembly",
+            &["Portable & compact execution format"
+             ,"Supported by all major browsers"
+             ,"Integrates well with JavaScript"
+             ,"https://rustwasm.github.io/docs"
+            ],
+            "http://localhost:9090/wasm-ferris.png"
+        ),
         bullet_slide_with_image(
             "Rust front-end frameworks",
             &["Seed", "Yew", "Sauron", "Syncamore", "Percy", "Iced", "Mogwai", "Dioxus"],
@@ -74,10 +83,19 @@ fn slideshow(props: &SlideProps) -> yew::Html {
              ,"Virtual DOM"
              ,"Very similar to React"
             ],
-            "http://localhost:9090/yew_rs.png"
+            "http://localhost:9090/yew_deps.png"
         ),
         bullet_slide_with_image(
-            "Yew",
+            "Why Yew?",
+            &["Most popular"
+             ,"Familiar interface"
+             ,"Hackable"
+             ,"Easy to get started"
+            ],
+            "http://localhost:9090/yew_compiler_error.png"
+        ),
+        bullet_slide_with_image(
+            "Yew stats",
             &["2017 first commit"
              ,"6550 dependents on GitHub"
              ,"333 contributors"
@@ -85,7 +103,6 @@ fn slideshow(props: &SlideProps) -> yew::Html {
             ],
             "http://localhost:9090/yew_contributors.png"
         ),
-        title_slide(HeroStyle::Info, "Yew in practice", ""),
         bullet_slide_with_image(
             "A minimal yew app",
             &["10 loc main.rs"
@@ -97,14 +114,9 @@ fn slideshow(props: &SlideProps) -> yew::Html {
         code_slide::slide!("../../minimal-app/Cargo.toml"),
         code_slide::slide!("../../minimal-app/src/main.rs"),
         code_slide::slide!("../../minimal-app/index.html"),
+        title_slide(HeroStyle::Info, "Yew in practice", ""),
         this_slide::slide(),
         code_slide::slide!("code_slide.rs"),
-        bullet_slide_with_image(
-            "Never gonna",
-            &["Give you up", "Let you down", "Tell a lie", "Hurt you"],
-            "https://variety.com/wp-content/uploads/2021/07/Rick-Astley-Never-Gonna-Give-You-Up.png?w=681&h=383&crop=1"
-        ),
-        image_slide("http://localhost:9090/yew_deps.png"),
     ];
 
     let thank_you = bullet_slide("Thank you for listening", &["Goodbye"]);
@@ -201,6 +213,27 @@ fn bullet_slide_with_image(title: &str, points: &[&str], image_src: impl ToStrin
                         <img src={ image_src.to_string() } />
                     </figure>
                 </div>
+            </div>
+        </div>
+    }
+}
+
+fn bullet_slide_with_icon(title: &str, points: &[&str], image_src: impl ToString) -> yew::Html {
+    let bullets: Vec<_> = points
+        .iter()
+        .map(|point| yew::html! {<li> { point } </li>})
+        .collect();
+
+    yew::html! {
+        <div class="columns is-vcentered">
+            <div class="column section is-half is-fullheight">
+                <div class="content">
+                    <h1 class="title">{ title }</h1>
+                    <ul>{ bullets }</ul>
+                </div>
+            </div>
+            <div class="column is-half is-fullheight">
+                <img src={ image_src.to_string() } />
             </div>
         </div>
     }

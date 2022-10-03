@@ -18,10 +18,9 @@ pub(crate) const SLIDES: Lazy<Vec<yew::Html>> = Lazy::new(|| {
         bullet_slide::slide(
             "About me",
             &[
-                "Algorithm Engineer @ Tobii",
-                "AI Developer @ Norna",
-                "Software Engineer @ Klarna",
-                "Engineering Manager @ Validio",
+                "BSc Engineering Physics",
+                "MSc Machine Learning",
+                "Tobii, Norna, Klarna, Validio",
             ],
         ),
         bullet_slide::with_image(
